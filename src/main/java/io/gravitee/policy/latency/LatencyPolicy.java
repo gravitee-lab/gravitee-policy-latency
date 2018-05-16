@@ -18,8 +18,12 @@ package io.gravitee.policy.latency;
 import io.gravitee.gateway.api.ExecutionContext;
 import io.gravitee.gateway.api.Request;
 import io.gravitee.gateway.api.Response;
+import io.gravitee.policy.api.ChainScope;
 import io.gravitee.policy.api.PolicyChain;
+import io.gravitee.policy.api.annotations.Category;
 import io.gravitee.policy.api.annotations.OnRequest;
+import io.gravitee.policy.api.annotations.Policy;
+import io.gravitee.policy.api.annotations.Scope;
 import io.gravitee.policy.latency.configuration.LatencyPolicyConfiguration;
 import io.vertx.core.Vertx;
 
@@ -27,6 +31,10 @@ import io.vertx.core.Vertx;
  * @author Azize ELAMRANI (azize.elamrani at graviteesource.com)
  * @author GraviteeSource Team
  */
+@Policy(
+        category = @Category(io.gravitee.policy.api.Category.OTHERS),
+        scope = @Scope(ChainScope.API)
+)
 public class LatencyPolicy {
 
     private final LatencyPolicyConfiguration latencyPolicyConfiguration;
